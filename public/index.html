@@ -4,69 +4,43 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat Rooms</title>
+    <title>Chat App</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.min.js"
+        integrity="sha512-Xm9qbB6Pu06k3PUwPj785dyTl6oHxgsv9nHp7ej7nCpAqGZT3OZpsELuCYX05DdonFpTlBpXMOxjavIAIUwr0w=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script defer src="rooms.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background-color: #121212;
-            color: #e0e0e0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        main {
-            width: 90%;
-            max-width: 600px;
-            background: #1e1e1e;
-            border-radius: 12px;
-            padding: 1rem;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        h1 {
-            text-align: center;
-        }
-
-        .room-list {
-            margin-top: 1rem;
-            list-style: none;
-            padding: 0;
-        }
-
-        .room-item {
-            background: #2c2c2c;
-            padding: 1rem;
-            margin-bottom: 0.5rem;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .room-item a {
-            text-decoration: none;
-            color: #3a86ff;
-            font-weight: bold;
-        }
-    </style>
+    <script defer src="app.js"></script>
+    <link href="style.css" rel="stylesheet">
+    
 </head>
 
 <body>
     <main>
-        <h1>Active Chat Rooms</h1>
-        <ul class="room-list" id="roomList"></ul>
+        <!-- Chat header added -->
+        <div class="chat-header">
+            <h2 class="room-name"></h2>
+            <button id="exit-room" style="display: none;">Exit</button>
+        </div>
+
+        <form class="form-join">
+            <input type="text" id="name" maxlength="16" placeholder="Your name" size="5" required>
+            <input type="text" id="room" placeholder="Chat room" size="5" required>
+            <button id="join" type="submit">Join</button>
+        </form>
+
+        <ul class="chat-display"></ul>
+
+        <p class="user-list"></p>
+
+        <p class="room-list"></p>
+
+        <p class="activity"></p>
+
+        <form class="form-msg">
+            <input type="text" id="message" placeholder="Your message" required>
+            <button type="submit">Send</button>
+        </form>
     </main>
 </body>
+
 
 </html>
